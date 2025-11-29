@@ -1,0 +1,7 @@
+{
+  "name": "BlogGetWay",
+  "description": "A modern, professional, fully editable AI-powered blog platform with admin dashboard, SEO tools, and Gemini-integrated content generation.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
