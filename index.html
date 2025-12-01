@@ -8,14 +8,38 @@
     
     <!-- Console Noise Suppression Script -->
     <script>
-      // Suppress specific warnings that are unavoidable in this environment
+      // Suppress specific warnings that are unavoidable in this environment or caused by external extensions
       const originalWarn = console.warn;
+      const originalError = console.error;
+      const originalLog = console.log;
+
+      const noiseFilters = [
+        'cdn.tailwindcss.com',
+        'source map',
+        'chrome-extension',
+        'browser-polyfill',
+        'DevTools failed to load'
+      ];
+
+      function shouldSuppress(args) {
+        if (!args || !args[0]) return false;
+        const msg = typeof args[0] === 'string' ? args[0] : '';
+        return noiseFilters.some(filter => msg.includes(filter));
+      }
+
       console.warn = function(...args) {
-        // Filter out Tailwind CDN production warning
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) {
-          return; 
-        }
+        if (shouldSuppress(args)) return;
         originalWarn.apply(console, args);
+      };
+
+      console.error = function(...args) {
+        if (shouldSuppress(args)) return;
+        originalError.apply(console, args);
+      };
+      
+      console.log = function(...args) {
+        if (shouldSuppress(args)) return;
+        originalLog.apply(console, args);
       };
     </script>
 
