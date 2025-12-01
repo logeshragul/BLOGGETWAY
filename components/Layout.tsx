@@ -110,9 +110,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <aside className="hidden md:flex flex-col w-72 bg-slate-900 text-white shadow-2xl z-20">
           <div className="p-8 border-b border-slate-800">
             <div className="flex items-center gap-3">
-              {settings.logoUrl && (
+              {settings.logoUrl ? (
                 <img src={settings.logoUrl} alt="Logo" className="w-8 h-8 rounded object-contain bg-white" />
-              )}
+              ) : settings.faviconUrl ? (
+                <img src={settings.faviconUrl} alt="Logo" className="w-8 h-8 rounded object-contain bg-white" />
+              ) : null}
               <div>
                 <h1 className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                   {settings.siteName || 'BlogGetWay'}
@@ -157,7 +159,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* Mobile Header */}
           <header className="bg-white shadow-sm p-4 flex justify-between items-center md:hidden z-10 sticky top-0">
              <div className="flex items-center gap-2">
-                {settings.logoUrl && <img src={settings.logoUrl} alt="Logo" className="w-6 h-6 object-contain" />}
+                {settings.logoUrl ? (
+                   <img src={settings.logoUrl} alt="Logo" className="w-6 h-6 object-contain" />
+                ) : settings.faviconUrl ? (
+                   <img src={settings.faviconUrl} alt="Logo" className="w-6 h-6 object-contain" />
+                ) : null}
                 <span className="font-bold text-slate-800 text-lg">{settings.siteName || 'BlogGetWay'} Admin</span>
              </div>
              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 hover:bg-slate-100 rounded-lg">
@@ -207,9 +213,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <header className="border-b border-slate-100 sticky top-0 bg-white/80 backdrop-blur-xl z-50 shadow-sm transition-all duration-300">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            {settings.logoUrl && (
+            {settings.logoUrl ? (
                <img src={settings.logoUrl} alt={settings.siteName} className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
-            )}
+            ) : settings.faviconUrl ? (
+               <img src={settings.faviconUrl} alt={settings.siteName} className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
+            ) : null}
             <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 tracking-tight">
               {settings.siteName || 'BlogGetWay'}
             </span>
@@ -268,7 +276,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-6">
-                 {settings.logoUrl && <img src={settings.logoUrl} alt="Logo" className="h-6 w-auto opacity-80" />}
+                 {settings.logoUrl ? (
+                   <img src={settings.logoUrl} alt="Logo" className="h-6 w-auto opacity-80" />
+                 ) : settings.faviconUrl ? (
+                   <img src={settings.faviconUrl} alt="Logo" className="h-6 w-auto opacity-80" />
+                 ) : null}
                  <h3 className="font-bold text-xl text-slate-900 tracking-tight">{settings.siteName || 'BlogGetWay'}</h3>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed mb-6">
