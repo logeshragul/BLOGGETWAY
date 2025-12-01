@@ -9,7 +9,7 @@ export const geminiService = {
     const ai = getAI();
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-lite-latest', // Fast responses
+        model: 'gemini-flash-lite-latest', // Fast responses
         contents: prompt,
       });
       return response.text || '';
@@ -46,7 +46,7 @@ export const geminiService = {
     const ai = getAI();
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-latest',
+        model: 'gemini-flash-latest',
         contents: `Research the following topic and provide a summary suitable for a blog post: ${query}`,
         config: {
           tools: [{ googleSearch: {} }]
